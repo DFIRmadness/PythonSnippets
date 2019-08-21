@@ -30,6 +30,9 @@ def writeToLog(stringToLog):
     now = datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
     with open(LOG, 'a') as log:
         log.write(now + " - " + stringToLog + '\n')
+
+def example():
+    writeToLog('This string would show up in the log with a timestamp')
 ```
 
 ### Security Checks on User Input:
