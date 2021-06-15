@@ -2,7 +2,18 @@
 
 ## Python3
 
-### Start a log and write it to functions:
+### Set Up Text Colors
+
+```python
+# Colors
+GREEN = '\033[32m'
+RED = '\033[31m'
+YELLOW = '\033[33m'
+NOCOLOR = '\033[m'
+```
+
+
+### Start a log and write to it from within functions:
 
 ```python
 from datetime import datetime,date
@@ -72,16 +83,15 @@ if geteuid() != 0:
         exit(0)
 ```
 
-### Color Printing to the terminal:
-
+### Check for internet connectivity:
 ```python
-# Colors
-GREEN = '\033[32m'
-RED = '\033[31m'
-YELLOW = '\033[33m'
-NOCOLOR = '\033[m'
-
-print(GREEN + '[+]' + NOCOLOR + ' The Device is: ' + deviceStatus + '.')
+# Check for internet connection
+try:
+    check = urlopen('https://www.google.com', timeout=3.0)
+    print(GREEN +'[+] Internet connection looks good!' + NOCOLOR)
+except:
+    print(RED + '[-] Internet connection looks down. You will need internet for this to run (most likely). Fix and try again.' + NOCOLOR)
+    exit(1)
 ```
 
 ### Python Main Function Call and Module Tie in:
