@@ -30,9 +30,18 @@ def writeToLog(stringToLog):
     now = datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
     with open(LOG, 'a') as log:
         log.write(now + " - " + stringToLog + '\n')
+    if '[+]' in stringToLog:
+        print(GREEN + stringToLog + NOCOLOR)
+    elif '[-]' in stringToLog:
+        print(RED + stringToLog + NOCOLOR)
+    elif '[i]' in stringToLog + NOCOLOR:
+        print(YELLOW + stringToLog + NOCOLOR)
+    else:
+        print(stringToLog)
 
 def example():
-    writeToLog('This string would show up in the log with a timestamp')
+    writeToLog('This string would show up in the log with a timestamp, and print to the screen with the default terminal color.')
+    writeToLog('[+] This would write to log, and print to the screen in green.')
 ```
 
 ### Security Checks on User Input:
